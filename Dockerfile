@@ -1,4 +1,4 @@
-FROM cm2network/steamcmd:base
+FROM cm2network/steamcmd:latest
 
 LABEL maintainer="scott.t.lusk@gmail.com"
 
