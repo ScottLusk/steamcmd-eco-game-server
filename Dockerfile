@@ -14,6 +14,7 @@ VOLUME [${STEAMAPPDIR}/Storage]
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libicu63 \
+		libgdiplus \
     && ${STEAMCMDDIR}/steamcmd.sh \
 		+login anonymous \
 		+force_install_dir ${STEAMAPPDIR} \
