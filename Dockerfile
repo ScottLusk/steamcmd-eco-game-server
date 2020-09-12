@@ -9,7 +9,7 @@ ENV STEAMAPPDIR /eco-server
 
 EXPOSE 3000/udp 3001/tcp
 
-VOLUME [/${STEAMAPPDIR}/Storage]
+VOLUME [/app/Storage]
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
