@@ -11,6 +11,8 @@ EXPOSE 3000/udp 3001/tcp
 
 VOLUME [${STEAMAPPDIR}/Storage]
 
+CMD [cd ${STEAMAPPDIR} && ./EcoServer]
+
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libicu63 \
