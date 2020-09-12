@@ -1,5 +1,7 @@
 FROM cm2network/steamcmd:latest
 
+USER root
+
 LABEL maintainer="scott.t.lusk@gmail.com"
 
 ENV STEAMAPPID 739590
@@ -9,8 +11,7 @@ EXPOSE 3000/udp 3001/tcp
 
 VOLUME [/${STEAMAPPDIR}/Storage]
 
-RUN set -x \
-	&& apt-get update \
+RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libicu63 \
     && ${STEAMCMDDIR}/steamcmd.sh \
