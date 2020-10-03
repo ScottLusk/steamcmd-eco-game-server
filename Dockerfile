@@ -6,6 +6,7 @@ LABEL maintainer="scott.t.lusk@gmail.com"
 
 ENV STEAMAPPID 739590
 ENV STEAMAPPDIR /home/steam/eco-server
+ENV STEAMSCRIPTDIR /home/steam/scripts
 
 VOLUME [${STEAMAPPDIR}/Storage]
 EXPOSE 3000/udp 3001/tcp
@@ -16,13 +17,13 @@ RUN apt-get update \
 		libgdiplus \
 		jq
 
-CMD ./steam_update.sh && \
+CMD ${STEAMSCRIPTDIR}/steam_update.sh && \
 	cd ${STEAMAPPDIR} && \
 	./EcoServer
 
-ADD src ${STEAMCMDDIR}
+ADD src ${STEAMSCRIPTDIR}
 
-RUN ./steam_update.sh
+RUN ${STEAMSCRIPTDIR}/steam_update.sh
 
 ENV WORLD_SIZE 144
 ENV PAUSED_WHEN_EMPTY true
@@ -31,4 +32,4 @@ ENV CREATE_METEOR false
 ENV METEOR_IMPACT_DAYS 60
 ENV BASE_SKILL_GAIN_RATE 24
 
-RUN ./configure_server.sh
+RUN ${STEAMSCRIPTDIR}/configure_server.sh
