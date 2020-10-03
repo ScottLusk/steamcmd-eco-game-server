@@ -10,12 +10,11 @@ ENV STEAMAPPDIR /home/steam/eco-server
 VOLUME [${STEAMAPPDIR}/Storage]
 EXPOSE 3000/udp 3001/tcp
 WORKDIR ${STEAMAPPDIR}
-CMD [./steam_update.sh && ./EcoServer]
-
-
+CMD ["./steam_update.sh && ./EcoServer"]
 
 ADD src ${STEAMAPPDIR}
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
 		libicu63 \
-		libgdiplus
+		libgdiplus \
+	&& find ${STEAMAPPDIR} -type f -iname "*.sh" -exec chmod +x {} \;
