@@ -1,7 +1,5 @@
 FROM cm2network/steamcmd:latest
 
-USER root
-
 LABEL maintainer="scott.t.lusk@gmail.com"
 
 ENV STEAMAPPID 739590
@@ -18,4 +16,3 @@ RUN apt-get update \
 CMD ./steam_update.sh && cd ${STEAMAPPDIR} && ./EcoServer
 
 ADD src ${STEAMCMDDIR}
-RUN chmod a+x *.sh;
