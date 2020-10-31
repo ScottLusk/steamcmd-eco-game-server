@@ -3,6 +3,16 @@
 An Eco Game Server based on SteamCMD
 https://www.play.eco/
 
+## Ports 
+- `3000 UDP`
+  - ECO Game Server
+- `3001 TCP`
+  - Web UI
+  
+## Volumes
+- /home/steam/eco-server/Storage
+  - Mount this volume to persist the server game files storage
+
 ## Updates
 Restarting the docker container will update the game server automatically through Steam.
 
