@@ -1,4 +1,4 @@
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hoeney/steamcmd-eco-game-server)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/hoeney/steamcmd-eco-game-server)](https://hub.docker.com/repository/docker/hoeney/steamcmd-eco-game-server)
 ### steamcmd-eco-game-server
 An Eco Game Server based on SteamCMD
 https://www.play.eco/
