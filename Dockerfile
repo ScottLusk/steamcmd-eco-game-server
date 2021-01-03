@@ -17,7 +17,7 @@ RUN apt-get update \
 		libicu63 \
 		libgdiplus \
 		jq \
-	&& locale-gen en_US.UTF-8
+	&& sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen
 
 CMD ${STEAMSCRIPTDIR}/steam_update.sh && \
 	cd ${STEAMAPPDIR} && \
@@ -25,6 +25,5 @@ CMD ${STEAMSCRIPTDIR}/steam_update.sh && \
 
 ADD src ${STEAMSCRIPTDIR}
 
-RUN ${STEAMSCRIPTDIR}/steam_update.sh
-
-RUN ${STEAMSCRIPTDIR}/configure_server.sh
+RUN ${STEAMSCRIPTDIR}/steam_update.sh \
+	&& ${STEAMSCRIPTDIR}/configure_server.sh
