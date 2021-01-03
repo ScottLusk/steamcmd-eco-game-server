@@ -13,9 +13,11 @@ EXPOSE 3000/udp 3001/tcp
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
+		locales \
 		libicu63 \
 		libgdiplus \
-		jq
+		jq \
+	&& locale-gen en_US.UTF-8
 
 CMD ${STEAMSCRIPTDIR}/steam_update.sh && \
 	cd ${STEAMAPPDIR} && \
