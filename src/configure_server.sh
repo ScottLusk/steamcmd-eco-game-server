@@ -32,6 +32,12 @@ cat ${STEAMAPPDIR}/Configs/Pause.eco.template |
     ' \
 > ${STEAMAPPDIR}/Configs/Pause.eco
 
+cat ${STEAMAPPDIR}/Configs/Users.eco.template |
+    jq '. | 
+        .Admins."System.String"."$values" = if env.ADMIN_LIST then env.ADMIN_LIST | split(",") else [] end
+    ' \
+> ${STEAMAPPDIR}/Configs/Users.eco
+
 cat ${STEAMAPPDIR}/Configs/WorldGenerator.eco.template |
     jq '. | 
         (.Dimensions.x,.Dimensions.y) = if env.WORLD_SIZE then (env.WORLD_SIZE | tonumber) else 72 end
