@@ -59,7 +59,7 @@ cat ${STEAMAPPDIR}/Configs/WorldGenerator.eco.template |
 cat ${STEAMAPPDIR}/Configs/Maintenance.eco.template |
     jq '. | 
         .AutoShutdownHour = if env.MAINTENANCE_HOUR then (env.MAINTENANCE_HOUR | tonumber) else -1 end |
-        .AutoShutdownMessage = "Server will restart for Maintenance soon. Please logout to prevent data loss." end
+        .AutoShutdownMessage = "Server will restart for Maintenance soon. Please logout to prevent data loss."
     ' \
 > ${STEAMAPPDIR}/Configs/Maintenance.eco
 
