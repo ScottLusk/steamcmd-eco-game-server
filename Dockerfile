@@ -13,6 +13,7 @@ EXPOSE 3000/udp 3001/tcp
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends --no-install-suggests \
+		procps\
 		locales \
 		libicu63 \
 		libgdiplus \
