@@ -19,10 +19,34 @@ Restarting the docker container will update the game server automatically throug
 ## Server Configuration
 Here are some environment variables you may pass into the container that will allow you to change the game server's settings. Please open an issue if you'd like more added.
 
-- `WORLD_SIZE` 
+- `SERVER_NAME`
+  - String
+  - Default `"Eco Server"`
+  - Mapped to Network.Description
+- `SERVER_DETAIL`
+  - String
+  - Default `"This Eco server was created using https://hub.docker.com/r/hoeney/steamcmd-eco-game-server."`
+  - Mapped to Network.DetailedDescription
+- `SERVER_PASSWORD`
+  - String
+  - Default `""`
+  - Mapped to Network.Password
+- `IS_PUBLIC_SERVER`
+  - Boolean
+  - Default `false`
+  - Mapped to Network.PublicServer
+- `ADMIN_LIST`
+  - String of comma separated SteamIDs
+  - Default `""`
+  - Mapped to Users.UserPermission.Admins.Collection."System.String"."$values"
+- `IS_PUBLIC_SERVER`
+  - Boolean
+  - Default `false`
+  - Mapped to Network.PublicServer
+- `MAINTENANCE_HOUR`
   - Number
-  - Default `72`
-  - Mapped to WorldGenerator.Dimensions.(x&y)
+  - Default `-1`
+  - Mapped to Maintenance.AutoShutdownHour
 - `CREATE_METEOR`
   - Boolean
   - Default `true`
@@ -35,6 +59,10 @@ Here are some environment variables you may pass into the container that will al
   - Number
   - Default `12.0`
   - Mapped to EcoSim.BaseSkillGainRate
+- `SHELF_LIFE_MULTIPLIER`
+  - Number
+  - Default `1.0`
+  - Mapped to Balance.ShelfLifeMultiplier
 - `ALLOW_FAST_FORWARD`
   - Boolean
   - Default `false`
