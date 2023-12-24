@@ -39,14 +39,14 @@ Here are some environment variables you may pass into the container that will al
   - String of comma separated SteamIDs
   - Default `""`
   - Mapped to Users.UserPermission.Admins.Collection."System.String"."$values"
-- `IS_PUBLIC_SERVER`
-  - Boolean
-  - Default `false`
-  - Mapped to Network.PublicServer
 - `MAINTENANCE_HOUR`
   - Number
   - Default `-1`
   - Mapped to Maintenance.AutoShutdownHour
+- `WORLD_SIZE`
+  - Number
+  - Default `72`
+  - Mapped to WorldGenerator.Dimensions.(x&y)
 - `CREATE_METEOR`
   - Boolean
   - Default `true`
