@@ -12,6 +12,8 @@ echo ALLOW_FAST_FORWARD $ALLOW_FAST_FORWARD
 echo PAUSED_WHEN_EMPTY $PAUSED_WHEN_EMPTY
 echo WORLD_SIZE $WORLD_SIZE
 echo MAINTENANCE_HOUR $MAINTENANCE_HOUR
+echo SETTLEMENT_INFLUENCE $SETTLEMENT_INFLUENCE
+echo SETTLEMENT_PLOT_COVERAGE $SETTLEMENT_PLOT_COVERAGE
 
 cat ${STEAMAPPDIR}/Configs/Balance.eco.template |
     jq '. | 
@@ -71,3 +73,10 @@ cat ${STEAMAPPDIR}/Configs/Network.eco.template |
         .Password = if env.SERVER_PASSWORD then env.SERVER_PASSWORD else "" end
     ' \
 > ${STEAMAPPDIR}/Configs/Network.eco
+
+cat ${STEAMAPPDIR}/Configs/Settlements.eco.template |
+    jq '. | 
+        .SettlementInfluenceMultiplier = if env.SETTLEMENT_INFLUENCE then [(env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber)] else 1 end |
+        .MinRequiredPlotCoveragePercentage = if env.SETTLEMENT_PLOT_COVERAGE then (env.SETTLEMENT_PLOT_COVERAGE | tonumber) else 0.5 end
+    ' \
+> ${STEAMAPPDIR}/Configs/Settlements.eco
