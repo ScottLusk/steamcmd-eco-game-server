@@ -35,9 +35,17 @@ Here are some environment variables you may pass into the container that will al
   - Boolean
   - Default `false`
   - Mapped to Network.PublicServer
+- `REMOTE_ADDRESS`
+  - String
+  - Default `""`
+  - Mapped to Network.RemoteAddress
+- `WEB_SERVER_URL`
+  - String
+  - Default `""`
+  - Mapped to Network.WebServerUrl
 - `ADMIN_LIST`
   - String of comma separated SteamIDs
-  - Default `""`
+  - Default `[]`
   - Mapped to Users.UserPermission.Admins.Collection."System.String"."$values"
 - `MAINTENANCE_HOUR`
   - Number
@@ -48,7 +56,7 @@ Here are some environment variables you may pass into the container that will al
   - Default `72`
   - Mapped to WorldGenerator.Dimensions.(x&y)
 - `CREATE_METEOR`
-  - Boolean
+  - Number
   - Default `true`
   - Mapped to Disasters.CreateMeteor
 - `METEOR_IMPACT_DAYS`
@@ -71,3 +79,11 @@ Here are some environment variables you may pass into the container that will al
   - Boolean
   - Default `false`
   - Mapped to Pause.Paused
+- `SETTLEMENT_INFLUENCE`
+  - Number
+  - Default `1`
+  - Mapped to Network.PublicServer
+- `SETTLEMENT_PLOT_COVERAGE`
+  - Number
+  - Default `0.5`
+  - Mapped to Network.PublicServer

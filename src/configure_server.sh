@@ -4,14 +4,16 @@ echo SERVER_NAME $SERVER_NAME
 echo SERVER_DETAIL $SERVER_DETAIL
 echo SERVER_PASSWORD $SERVER_PASSWORD
 echo IS_PUBLIC_SERVER $IS_PUBLIC_SERVER
-echo SHELF_LIFE_MULTIPLIER $SHELF_LIFE_MULTIPLIER
-echo BASE_SKILL_GAIN_RATE $BASE_SKILL_GAIN_RATE
+echo REMOTE_ADDRESS $REMOTE_ADDRESS
+echo WEB_SERVER_URL $WEB_SERVER_URL
+echo MAINTENANCE_HOUR $MAINTENANCE_HOUR
+echo WORLD_SIZE $WORLD_SIZE
 echo CREATE_METEOR $CREATE_METEOR
 echo METEOR_IMPACT_DAYS $METEOR_IMPACT_DAYS
+echo BASE_SKILL_GAIN_RATE $BASE_SKILL_GAIN_RATE
+echo SHELF_LIFE_MULTIPLIER $SHELF_LIFE_MULTIPLIER
 echo ALLOW_FAST_FORWARD $ALLOW_FAST_FORWARD
 echo PAUSED_WHEN_EMPTY $PAUSED_WHEN_EMPTY
-echo WORLD_SIZE $WORLD_SIZE
-echo MAINTENANCE_HOUR $MAINTENANCE_HOUR
 echo SETTLEMENT_INFLUENCE $SETTLEMENT_INFLUENCE
 echo SETTLEMENT_PLOT_COVERAGE $SETTLEMENT_PLOT_COVERAGE
 
@@ -70,13 +72,15 @@ cat ${STEAMAPPDIR}/Configs/Network.eco.template |
         .PublicServer = if env.IS_PUBLIC_SERVER then env.IS_PUBLIC_SERVER else false end |
         .Description = if env.SERVER_NAME then env.SERVER_NAME else "Eco Server" end |
         .DetailedDescription = if env.SERVER_DETAIL then env.SERVER_DETAIL else "This Eco server was created using https://hub.docker.com/r/hoeney/steamcmd-eco-game-server." end |
-        .Password = if env.SERVER_PASSWORD then env.SERVER_PASSWORD else "" end
+        .Password = if env.SERVER_PASSWORD then env.SERVER_PASSWORD else "" end |
+        .RemoteAddress = if env.REMOTE_ADDRESS then env.REMOTE_ADDRESS else "" end |
+        .WebServerUrl = if env.WEB_SERVER_URL then env.WEB_SERVER_URL else "" end
     ' \
 > ${STEAMAPPDIR}/Configs/Network.eco
 
 cat ${STEAMAPPDIR}/Configs/Settlements.eco.template |
     jq '. | 
-        .SettlementInfluenceMultiplier = if env.SETTLEMENT_INFLUENCE then [(env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber)] else 1 end |
+        .SettlementInfluenceMultiplier = if env.SETTLEMENT_INFLUENCE then [(env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber), (env.SETTLEMENT_INFLUENCE | tonumber)] else [1,1,1] end |
         .MinRequiredPlotCoveragePercentage = if env.SETTLEMENT_PLOT_COVERAGE then (env.SETTLEMENT_PLOT_COVERAGE | tonumber) else 0.5 end
     ' \
 > ${STEAMAPPDIR}/Configs/Settlements.eco
