@@ -5,9 +5,5 @@ server_running=[[ -z $(ps aux | grep 'EcoServer' | grep -Ev 'grep|/bin/sh|bash')
 online_players=$(curl -s https://eco.scottlusk.me/info | jq .OnlinePlayers)
 
 if [[ !$server_running || $online_players == 0 ]]; then
-	${STEAMCMDDIR}/steamcmd.sh \
-			+login anonymous \
-			+force_install_dir ${STEAMAPPDIR} \
-			+app_update ${STEAMAPPID} validate \
-			+quit
+	su steam -c "${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${STEAMAPPDIR} +app_update ${STEAMAPPID} validate +quit"
 fi
